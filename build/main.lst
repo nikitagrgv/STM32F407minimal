@@ -1,0 +1,144 @@
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cchGuwag.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.cpp"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	1
+  21              		.global	main
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	main:
+  27              		.fnstart
+  28              	.LFB134:
+  29              		.file 1 "src/main.cpp"
+   1:src/main.cpp  **** #include "stm32f407xx.h"
+   2:src/main.cpp  **** 
+   3:src/main.cpp  **** int main()
+   4:src/main.cpp  **** {
+  30              		.loc 1 4 1 view -0
+  31              		.cfi_startproc
+  32              		@ Volatile: function does not return.
+  33              		@ args = 0, pretend = 0, frame = 8
+  34              		@ frame_needed = 0, uses_anonymous_args = 0
+  35              		@ link register save eliminated.
+  36 0000 82B0     		sub	sp, sp, #8
+  37              	.LCFI0:
+  38              		.cfi_def_cfa_offset 8
+   5:src/main.cpp  ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+  39              		.loc 1 5 5 view .LVU1
+  40              		.loc 1 5 18 is_stmt 0 view .LVU2
+  41 0002 124A     		ldr	r2, .L6
+  42 0004 136B     		ldr	r3, [r2, #48]
+  43 0006 43F00103 		orr	r3, r3, #1
+  44 000a 1363     		str	r3, [r2, #48]
+   6:src/main.cpp  ****     GPIOA->MODER |= GPIO_MODER_MODER6_0;
+  45              		.loc 1 6 5 is_stmt 1 view .LVU3
+  46              		.loc 1 6 18 is_stmt 0 view .LVU4
+  47 000c A2F56052 		sub	r2, r2, #14336
+  48 0010 1368     		ldr	r3, [r2]
+  49 0012 43F48053 		orr	r3, r3, #4096
+  50 0016 1360     		str	r3, [r2]
+  51              	.L4:
+   7:src/main.cpp  **** 
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cchGuwag.s 			page 2
+
+
+   8:src/main.cpp  ****     while (1)
+  52              		.loc 1 8 5 is_stmt 1 view .LVU5
+  53              	.LBB2:
+   9:src/main.cpp  ****     {
+  10:src/main.cpp  ****         GPIOA->ODR |= GPIO_ODR_ODR_6;
+  54              		.loc 1 10 9 view .LVU6
+  55              		.loc 1 10 20 is_stmt 0 view .LVU7
+  56 0018 0D4A     		ldr	r2, .L6+4
+  57 001a 5369     		ldr	r3, [r2, #20]
+  58 001c 43F04003 		orr	r3, r3, #64
+  59 0020 5361     		str	r3, [r2, #20]
+  11:src/main.cpp  ****         volatile int i = 5e5;
+  60              		.loc 1 11 9 is_stmt 1 view .LVU8
+  61              		.loc 1 11 22 is_stmt 0 view .LVU9
+  62 0022 0C4B     		ldr	r3, .L6+8
+  63 0024 0193     		str	r3, [sp, #4]
+  64              	.L2:
+  12:src/main.cpp  ****         while (i--)
+  65              		.loc 1 12 9 is_stmt 1 view .LVU10
+  66              		.loc 1 12 17 view .LVU11
+  67 0026 019B     		ldr	r3, [sp, #4]
+  68 0028 5A1E     		subs	r2, r3, #1
+  69 002a 0192     		str	r2, [sp, #4]
+  70 002c 002B     		cmp	r3, #0
+  71 002e FAD1     		bne	.L2
+  13:src/main.cpp  ****         {
+  14:src/main.cpp  ****         }
+  15:src/main.cpp  **** 
+  16:src/main.cpp  ****         GPIOA->ODR &= ~GPIO_ODR_ODR_6;
+  72              		.loc 1 16 9 view .LVU12
+  73              		.loc 1 16 20 is_stmt 0 view .LVU13
+  74 0030 074A     		ldr	r2, .L6+4
+  75 0032 5369     		ldr	r3, [r2, #20]
+  76 0034 23F04003 		bic	r3, r3, #64
+  77 0038 5361     		str	r3, [r2, #20]
+  17:src/main.cpp  **** 
+  18:src/main.cpp  ****         i = 5e5;
+  78              		.loc 1 18 9 is_stmt 1 view .LVU14
+  79              		.loc 1 18 11 is_stmt 0 view .LVU15
+  80 003a 064B     		ldr	r3, .L6+8
+  81 003c 0193     		str	r3, [sp, #4]
+  82              	.L3:
+  19:src/main.cpp  ****         while (i--)
+  83              		.loc 1 19 9 is_stmt 1 view .LVU16
+  84              		.loc 1 19 17 view .LVU17
+  85 003e 019B     		ldr	r3, [sp, #4]
+  86 0040 5A1E     		subs	r2, r3, #1
+  87 0042 0192     		str	r2, [sp, #4]
+  88 0044 002B     		cmp	r3, #0
+  89 0046 FAD1     		bne	.L3
+  90 0048 E6E7     		b	.L4
+  91              	.L7:
+  92 004a 00BF     		.align	2
+  93              	.L6:
+  94 004c 00380240 		.word	1073887232
+  95 0050 00000240 		.word	1073872896
+  96 0054 20A10700 		.word	500000
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cchGuwag.s 			page 3
+
+
+  97              	.LBE2:
+  98              		.cfi_endproc
+  99              	.LFE134:
+ 100              		.cantunwind
+ 101              		.fnend
+ 103              		.text
+ 104              	.Letext0:
+ 105              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 106              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 107              		.file 4 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cchGuwag.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.cpp
+C:\Users\nekita\AppData\Local\Temp\cchGuwag.s:20     .text.main:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\cchGuwag.s:26     .text.main:00000000 main
+C:\Users\nekita\AppData\Local\Temp\cchGuwag.s:94     .text.main:0000004c $d
+             .ARM.exidx.text.main:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "stm32f4xx.h": "c",
+        "stm32f407xx.h": "c"
+    },
+    "cSpell.enableFiletypes": [
+        "!c",
+        "!cpp"
+    ]
+}

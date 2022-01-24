@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "cortex-debug",
+            "request": "launch",
+            "name": "Debug Microcontroller",
+            "servertype": "openocd",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/f407ve.elf",
+            "device": "STM32F407VET6",
+            "configFiles": [
+                "stmf4.cfg",
+            ],
+            "svdFile": "${workspaceRoot}/STM32F407.svd",
+            "showDevDebugOutput": true,
+        }
+    ]
+}
