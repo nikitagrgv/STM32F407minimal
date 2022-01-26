@@ -9,7 +9,8 @@
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "_UNICODE",
+                "STM32F407xx"
             ],
             "compilerPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2021.10\\bin\\arm-none-eabi-gcc.exe",
             // "compilerPath": "C:\\MinGW\\bin\\gcc.exe",

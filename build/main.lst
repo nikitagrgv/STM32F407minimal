@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\cco3maFG.s 			page 1
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -31,130 +31,398 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\cco3maFG.s 			page 1
   29              		.file 1 "src/main.c"
    1:src/main.c    **** #include "stm32f407xx.h"
    2:src/main.c    **** 
-   3:src/main.c    **** 
-   4:src/main.c    **** void wait(uint32_t count)
-   5:src/main.c    **** {
-  30              		.loc 1 5 1 view -0
+   3:src/main.c    **** volatile uint32_t time = 0;
+   4:src/main.c    **** 
+   5:src/main.c    **** void wait(uint32_t ms)
+   6:src/main.c    **** {
+  30              		.loc 1 6 1 view -0
   31              		.cfi_startproc
-  32              		@ args = 0, pretend = 0, frame = 8
+  32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-  35              		.loc 1 5 1 is_stmt 0 view .LVU1
-  36 0000 82B0     		sub	sp, sp, #8
-  37              	.LCFI0:
-  38              		.cfi_def_cfa_offset 8
-   6:src/main.c    ****     volatile uint32_t i = count;
-  39              		.loc 1 6 5 is_stmt 1 view .LVU2
-  40              		.loc 1 6 23 is_stmt 0 view .LVU3
-  41 0002 0190     		str	r0, [sp, #4]
-   7:src/main.c    ****     while (i--)
-  42              		.loc 1 7 5 is_stmt 1 view .LVU4
-  43              	.L2:
-   8:src/main.c    ****         ;
-  44              		.loc 1 8 9 discriminator 1 view .LVU5
-   7:src/main.c    ****     while (i--)
-  45              		.loc 1 7 11 discriminator 1 view .LVU6
-   7:src/main.c    ****     while (i--)
-  46              		.loc 1 7 13 is_stmt 0 discriminator 1 view .LVU7
-  47 0004 019B     		ldr	r3, [sp, #4]
-  48 0006 5A1E     		subs	r2, r3, #1
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\cco3maFG.s 			page 2
+   7:src/main.c    ****     SysTick->VAL = 0;
+  35              		.loc 1 7 5 view .LVU1
+  36              		.loc 1 7 18 is_stmt 0 view .LVU2
+  37 0000 4FF0E023 		mov	r3, #-536813568
+  38 0004 0022     		movs	r2, #0
+  39 0006 9A61     		str	r2, [r3, #24]
+   8:src/main.c    ****     while (ms)
+  40              		.loc 1 8 5 is_stmt 1 view .LVU3
+  41              	.L3:
+  42              		.loc 1 8 11 view .LVU4
+  43 0008 38B1     		cbz	r0, .L5
+   9:src/main.c    ****     {
+  10:src/main.c    ****         if (SysTick->CTRL & 1 << 16)
+  44              		.loc 1 10 9 view .LVU5
+  45              		.loc 1 10 20 is_stmt 0 view .LVU6
+  46 000a 4FF0E023 		mov	r3, #-536813568
+  47 000e 1B69     		ldr	r3, [r3, #16]
+  48              		.loc 1 10 12 view .LVU7
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 2
 
 
-  49 0008 0192     		str	r2, [sp, #4]
-   7:src/main.c    ****     while (i--)
-  50              		.loc 1 7 11 discriminator 1 view .LVU8
-  51 000a 002B     		cmp	r3, #0
-  52 000c FAD1     		bne	.L2
-   9:src/main.c    **** }
-  53              		.loc 1 9 1 view .LVU9
-  54 000e 02B0     		add	sp, sp, #8
-  55              	.LCFI1:
-  56              		.cfi_def_cfa_offset 0
-  57              		@ sp needed
-  58 0010 7047     		bx	lr
-  59              		.cfi_endproc
-  60              	.LFE134:
-  62              		.section	.text.main,"ax",%progbits
-  63              		.align	1
-  64              		.global	main
-  65              		.syntax unified
-  66              		.thumb
-  67              		.thumb_func
-  69              	main:
-  70              	.LFB135:
-  10:src/main.c    **** 
-  11:src/main.c    **** int main()
-  12:src/main.c    **** {
-  71              		.loc 1 12 1 is_stmt 1 view -0
-  72              		.cfi_startproc
-  73              		@ Volatile: function does not return.
-  74              		@ args = 0, pretend = 0, frame = 0
-  75              		@ frame_needed = 0, uses_anonymous_args = 0
-  76 0000 08B5     		push	{r3, lr}
-  77              	.LCFI2:
-  78              		.cfi_def_cfa_offset 8
-  79              		.cfi_offset 3, -8
-  80              		.cfi_offset 14, -4
-  13:src/main.c    ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
-  81              		.loc 1 13 5 view .LVU11
-  82              		.loc 1 13 18 is_stmt 0 view .LVU12
-  83 0002 0A4A     		ldr	r2, .L7
-  84 0004 136B     		ldr	r3, [r2, #48]
-  85 0006 43F00103 		orr	r3, r3, #1
-  86 000a 1363     		str	r3, [r2, #48]
-  14:src/main.c    ****     GPIOA->MODER |= GPIO_MODER_MODER6_0;
-  87              		.loc 1 14 5 is_stmt 1 view .LVU13
-  88              		.loc 1 14 18 is_stmt 0 view .LVU14
-  89 000c A2F56052 		sub	r2, r2, #14336
-  90 0010 1368     		ldr	r3, [r2]
-  91 0012 43F48053 		orr	r3, r3, #4096
-  92 0016 1360     		str	r3, [r2]
-  93              	.L5:
-  15:src/main.c    **** 
-  16:src/main.c    ****     while (1)
-  94              		.loc 1 16 5 is_stmt 1 discriminator 1 view .LVU15
-  17:src/main.c    ****     {
-  18:src/main.c    ****         wait(5e5);
-  95              		.loc 1 18 9 discriminator 1 view .LVU16
-  96 0018 0548     		ldr	r0, .L7+4
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\cco3maFG.s 			page 3
+  49 0010 13F4803F 		tst	r3, #65536
+  50 0014 F8D0     		beq	.L3
+  11:src/main.c    ****         {
+  12:src/main.c    ****             ms--;
+  51              		.loc 1 12 13 is_stmt 1 view .LVU8
+  52              		.loc 1 12 15 is_stmt 0 view .LVU9
+  53 0016 0138     		subs	r0, r0, #1
+  54              	.LVL1:
+  55              		.loc 1 12 15 view .LVU10
+  56 0018 F6E7     		b	.L3
+  57              	.L5:
+  13:src/main.c    ****         }
+  14:src/main.c    ****     }
+  15:src/main.c    **** }
+  58              		.loc 1 15 1 view .LVU11
+  59 001a 7047     		bx	lr
+  60              		.cfi_endproc
+  61              	.LFE134:
+  63              		.section	.text.main,"ax",%progbits
+  64              		.align	1
+  65              		.global	main
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  70              	main:
+  71              	.LFB135:
+  16:src/main.c    **** 
+  17:src/main.c    **** int main()
+  18:src/main.c    **** {
+  72              		.loc 1 18 1 is_stmt 1 view -0
+  73              		.cfi_startproc
+  74              		@ Volatile: function does not return.
+  75              		@ args = 0, pretend = 0, frame = 0
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 0000 08B5     		push	{r3, lr}
+  78              	.LCFI0:
+  79              		.cfi_def_cfa_offset 8
+  80              		.cfi_offset 3, -8
+  81              		.cfi_offset 14, -4
+  19:src/main.c    ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+  82              		.loc 1 19 5 view .LVU13
+  83              		.loc 1 19 18 is_stmt 0 view .LVU14
+  84 0002 534A     		ldr	r2, .L9
+  85 0004 136B     		ldr	r3, [r2, #48]
+  86 0006 43F00103 		orr	r3, r3, #1
+  87 000a 1363     		str	r3, [r2, #48]
+  20:src/main.c    ****     GPIOA->MODER |= GPIO_MODER_MODER6_0;
+  88              		.loc 1 20 5 is_stmt 1 view .LVU15
+  89              		.loc 1 20 18 is_stmt 0 view .LVU16
+  90 000c A2F56052 		sub	r2, r2, #14336
+  91 0010 1368     		ldr	r3, [r2]
+  92 0012 43F48053 		orr	r3, r3, #4096
+  93 0016 1360     		str	r3, [r2]
+  94              	.L7:
+  21:src/main.c    **** 
+  22:src/main.c    ****     while (1)
+  95              		.loc 1 22 5 is_stmt 1 discriminator 1 view .LVU17
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 3
 
 
-  97 001a FFF7FEFF 		bl	wait
-  98              	.LVL1:
-  19:src/main.c    ****         GPIOA->ODR ^= GPIO_ODR_ODR_6;
-  99              		.loc 1 19 9 discriminator 1 view .LVU17
- 100              		.loc 1 19 20 is_stmt 0 discriminator 1 view .LVU18
- 101 001e 054A     		ldr	r2, .L7+8
- 102 0020 5369     		ldr	r3, [r2, #20]
- 103 0022 83F04003 		eor	r3, r3, #64
- 104 0026 5361     		str	r3, [r2, #20]
-  16:src/main.c    ****     {
- 105              		.loc 1 16 11 is_stmt 1 discriminator 1 view .LVU19
- 106 0028 F6E7     		b	.L5
- 107              	.L8:
- 108 002a 00BF     		.align	2
- 109              	.L7:
- 110 002c 00380240 		.word	1073887232
- 111 0030 20A10700 		.word	500000
- 112 0034 00000240 		.word	1073872896
- 113              		.cfi_endproc
- 114              	.LFE135:
- 116              		.text
- 117              	.Letext0:
- 118              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 119              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 120              		.file 4 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\cco3maFG.s 			page 4
+  23:src/main.c    ****     {
+  24:src/main.c    ****         wait(10);
+  96              		.loc 1 24 9 discriminator 1 view .LVU18
+  97 0018 0A20     		movs	r0, #10
+  98 001a FFF7FEFF 		bl	wait
+  99              	.LVL2:
+  25:src/main.c    ****         wait(10);
+ 100              		.loc 1 25 9 discriminator 1 view .LVU19
+ 101 001e 0A20     		movs	r0, #10
+ 102 0020 FFF7FEFF 		bl	wait
+ 103              	.LVL3:
+  26:src/main.c    ****         wait(10);
+ 104              		.loc 1 26 9 discriminator 1 view .LVU20
+ 105 0024 0A20     		movs	r0, #10
+ 106 0026 FFF7FEFF 		bl	wait
+ 107              	.LVL4:
+  27:src/main.c    ****         wait(10);
+ 108              		.loc 1 27 9 discriminator 1 view .LVU21
+ 109 002a 0A20     		movs	r0, #10
+ 110 002c FFF7FEFF 		bl	wait
+ 111              	.LVL5:
+  28:src/main.c    ****         wait(10);
+ 112              		.loc 1 28 9 discriminator 1 view .LVU22
+ 113 0030 0A20     		movs	r0, #10
+ 114 0032 FFF7FEFF 		bl	wait
+ 115              	.LVL6:
+  29:src/main.c    ****         wait(10);
+ 116              		.loc 1 29 9 discriminator 1 view .LVU23
+ 117 0036 0A20     		movs	r0, #10
+ 118 0038 FFF7FEFF 		bl	wait
+ 119              	.LVL7:
+  30:src/main.c    ****         wait(10);
+ 120              		.loc 1 30 9 discriminator 1 view .LVU24
+ 121 003c 0A20     		movs	r0, #10
+ 122 003e FFF7FEFF 		bl	wait
+ 123              	.LVL8:
+  31:src/main.c    ****         wait(10);
+ 124              		.loc 1 31 9 discriminator 1 view .LVU25
+ 125 0042 0A20     		movs	r0, #10
+ 126 0044 FFF7FEFF 		bl	wait
+ 127              	.LVL9:
+  32:src/main.c    ****         wait(10);
+ 128              		.loc 1 32 9 discriminator 1 view .LVU26
+ 129 0048 0A20     		movs	r0, #10
+ 130 004a FFF7FEFF 		bl	wait
+ 131              	.LVL10:
+  33:src/main.c    ****         wait(10);
+ 132              		.loc 1 33 9 discriminator 1 view .LVU27
+ 133 004e 0A20     		movs	r0, #10
+ 134 0050 FFF7FEFF 		bl	wait
+ 135              	.LVL11:
+  34:src/main.c    ****         wait(10);
+ 136              		.loc 1 34 9 discriminator 1 view .LVU28
+ 137 0054 0A20     		movs	r0, #10
+ 138 0056 FFF7FEFF 		bl	wait
+ 139              	.LVL12:
+  35:src/main.c    ****         wait(10);
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 4
+
+
+ 140              		.loc 1 35 9 discriminator 1 view .LVU29
+ 141 005a 0A20     		movs	r0, #10
+ 142 005c FFF7FEFF 		bl	wait
+ 143              	.LVL13:
+  36:src/main.c    ****         wait(10);
+ 144              		.loc 1 36 9 discriminator 1 view .LVU30
+ 145 0060 0A20     		movs	r0, #10
+ 146 0062 FFF7FEFF 		bl	wait
+ 147              	.LVL14:
+  37:src/main.c    ****         wait(10);
+ 148              		.loc 1 37 9 discriminator 1 view .LVU31
+ 149 0066 0A20     		movs	r0, #10
+ 150 0068 FFF7FEFF 		bl	wait
+ 151              	.LVL15:
+  38:src/main.c    ****         wait(10);
+ 152              		.loc 1 38 9 discriminator 1 view .LVU32
+ 153 006c 0A20     		movs	r0, #10
+ 154 006e FFF7FEFF 		bl	wait
+ 155              	.LVL16:
+  39:src/main.c    ****         wait(10);
+ 156              		.loc 1 39 9 discriminator 1 view .LVU33
+ 157 0072 0A20     		movs	r0, #10
+ 158 0074 FFF7FEFF 		bl	wait
+ 159              	.LVL17:
+  40:src/main.c    ****         wait(10);
+ 160              		.loc 1 40 9 discriminator 1 view .LVU34
+ 161 0078 0A20     		movs	r0, #10
+ 162 007a FFF7FEFF 		bl	wait
+ 163              	.LVL18:
+  41:src/main.c    ****         wait(10);
+ 164              		.loc 1 41 9 discriminator 1 view .LVU35
+ 165 007e 0A20     		movs	r0, #10
+ 166 0080 FFF7FEFF 		bl	wait
+ 167              	.LVL19:
+  42:src/main.c    ****         wait(10);
+ 168              		.loc 1 42 9 discriminator 1 view .LVU36
+ 169 0084 0A20     		movs	r0, #10
+ 170 0086 FFF7FEFF 		bl	wait
+ 171              	.LVL20:
+  43:src/main.c    ****         wait(10);
+ 172              		.loc 1 43 9 discriminator 1 view .LVU37
+ 173 008a 0A20     		movs	r0, #10
+ 174 008c FFF7FEFF 		bl	wait
+ 175              	.LVL21:
+  44:src/main.c    ****         wait(10);
+ 176              		.loc 1 44 9 discriminator 1 view .LVU38
+ 177 0090 0A20     		movs	r0, #10
+ 178 0092 FFF7FEFF 		bl	wait
+ 179              	.LVL22:
+  45:src/main.c    ****         wait(10);
+ 180              		.loc 1 45 9 discriminator 1 view .LVU39
+ 181 0096 0A20     		movs	r0, #10
+ 182 0098 FFF7FEFF 		bl	wait
+ 183              	.LVL23:
+  46:src/main.c    ****         wait(10);
+ 184              		.loc 1 46 9 discriminator 1 view .LVU40
+ 185 009c 0A20     		movs	r0, #10
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 5
+
+
+ 186 009e FFF7FEFF 		bl	wait
+ 187              	.LVL24:
+  47:src/main.c    ****         wait(10);
+ 188              		.loc 1 47 9 discriminator 1 view .LVU41
+ 189 00a2 0A20     		movs	r0, #10
+ 190 00a4 FFF7FEFF 		bl	wait
+ 191              	.LVL25:
+  48:src/main.c    ****         wait(10);
+ 192              		.loc 1 48 9 discriminator 1 view .LVU42
+ 193 00a8 0A20     		movs	r0, #10
+ 194 00aa FFF7FEFF 		bl	wait
+ 195              	.LVL26:
+  49:src/main.c    ****         wait(10);
+ 196              		.loc 1 49 9 discriminator 1 view .LVU43
+ 197 00ae 0A20     		movs	r0, #10
+ 198 00b0 FFF7FEFF 		bl	wait
+ 199              	.LVL27:
+  50:src/main.c    ****         wait(10);
+ 200              		.loc 1 50 9 discriminator 1 view .LVU44
+ 201 00b4 0A20     		movs	r0, #10
+ 202 00b6 FFF7FEFF 		bl	wait
+ 203              	.LVL28:
+  51:src/main.c    ****         wait(10);
+ 204              		.loc 1 51 9 discriminator 1 view .LVU45
+ 205 00ba 0A20     		movs	r0, #10
+ 206 00bc FFF7FEFF 		bl	wait
+ 207              	.LVL29:
+  52:src/main.c    ****         wait(10);
+ 208              		.loc 1 52 9 discriminator 1 view .LVU46
+ 209 00c0 0A20     		movs	r0, #10
+ 210 00c2 FFF7FEFF 		bl	wait
+ 211              	.LVL30:
+  53:src/main.c    ****         wait(10);
+ 212              		.loc 1 53 9 discriminator 1 view .LVU47
+ 213 00c6 0A20     		movs	r0, #10
+ 214 00c8 FFF7FEFF 		bl	wait
+ 215              	.LVL31:
+  54:src/main.c    ****         wait(10);
+ 216              		.loc 1 54 9 discriminator 1 view .LVU48
+ 217 00cc 0A20     		movs	r0, #10
+ 218 00ce FFF7FEFF 		bl	wait
+ 219              	.LVL32:
+  55:src/main.c    ****         wait(10);
+ 220              		.loc 1 55 9 discriminator 1 view .LVU49
+ 221 00d2 0A20     		movs	r0, #10
+ 222 00d4 FFF7FEFF 		bl	wait
+ 223              	.LVL33:
+  56:src/main.c    ****         wait(10);
+ 224              		.loc 1 56 9 discriminator 1 view .LVU50
+ 225 00d8 0A20     		movs	r0, #10
+ 226 00da FFF7FEFF 		bl	wait
+ 227              	.LVL34:
+  57:src/main.c    ****         wait(10);
+ 228              		.loc 1 57 9 discriminator 1 view .LVU51
+ 229 00de 0A20     		movs	r0, #10
+ 230 00e0 FFF7FEFF 		bl	wait
+ 231              	.LVL35:
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 6
+
+
+  58:src/main.c    ****         wait(10);
+ 232              		.loc 1 58 9 discriminator 1 view .LVU52
+ 233 00e4 0A20     		movs	r0, #10
+ 234 00e6 FFF7FEFF 		bl	wait
+ 235              	.LVL36:
+  59:src/main.c    ****         wait(10);
+ 236              		.loc 1 59 9 discriminator 1 view .LVU53
+ 237 00ea 0A20     		movs	r0, #10
+ 238 00ec FFF7FEFF 		bl	wait
+ 239              	.LVL37:
+  60:src/main.c    ****         wait(10);
+ 240              		.loc 1 60 9 discriminator 1 view .LVU54
+ 241 00f0 0A20     		movs	r0, #10
+ 242 00f2 FFF7FEFF 		bl	wait
+ 243              	.LVL38:
+  61:src/main.c    ****         wait(10);
+ 244              		.loc 1 61 9 discriminator 1 view .LVU55
+ 245 00f6 0A20     		movs	r0, #10
+ 246 00f8 FFF7FEFF 		bl	wait
+ 247              	.LVL39:
+  62:src/main.c    ****         wait(10);
+ 248              		.loc 1 62 9 discriminator 1 view .LVU56
+ 249 00fc 0A20     		movs	r0, #10
+ 250 00fe FFF7FEFF 		bl	wait
+ 251              	.LVL40:
+  63:src/main.c    ****         wait(10);
+ 252              		.loc 1 63 9 discriminator 1 view .LVU57
+ 253 0102 0A20     		movs	r0, #10
+ 254 0104 FFF7FEFF 		bl	wait
+ 255              	.LVL41:
+  64:src/main.c    ****         wait(10);
+ 256              		.loc 1 64 9 discriminator 1 view .LVU58
+ 257 0108 0A20     		movs	r0, #10
+ 258 010a FFF7FEFF 		bl	wait
+ 259              	.LVL42:
+  65:src/main.c    ****         wait(10);
+ 260              		.loc 1 65 9 discriminator 1 view .LVU59
+ 261 010e 0A20     		movs	r0, #10
+ 262 0110 FFF7FEFF 		bl	wait
+ 263              	.LVL43:
+  66:src/main.c    ****         wait(10);
+ 264              		.loc 1 66 9 discriminator 1 view .LVU60
+ 265 0114 0A20     		movs	r0, #10
+ 266 0116 FFF7FEFF 		bl	wait
+ 267              	.LVL44:
+  67:src/main.c    ****         wait(10);
+ 268              		.loc 1 67 9 discriminator 1 view .LVU61
+ 269 011a 0A20     		movs	r0, #10
+ 270 011c FFF7FEFF 		bl	wait
+ 271              	.LVL45:
+  68:src/main.c    ****         wait(10);
+ 272              		.loc 1 68 9 discriminator 1 view .LVU62
+ 273 0120 0A20     		movs	r0, #10
+ 274 0122 FFF7FEFF 		bl	wait
+ 275              	.LVL46:
+  69:src/main.c    ****         wait(10);
+ 276              		.loc 1 69 9 discriminator 1 view .LVU63
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 7
+
+
+ 277 0126 0A20     		movs	r0, #10
+ 278 0128 FFF7FEFF 		bl	wait
+ 279              	.LVL47:
+  70:src/main.c    ****         wait(10);
+ 280              		.loc 1 70 9 discriminator 1 view .LVU64
+ 281 012c 0A20     		movs	r0, #10
+ 282 012e FFF7FEFF 		bl	wait
+ 283              	.LVL48:
+  71:src/main.c    ****         wait(10);
+ 284              		.loc 1 71 9 discriminator 1 view .LVU65
+ 285 0132 0A20     		movs	r0, #10
+ 286 0134 FFF7FEFF 		bl	wait
+ 287              	.LVL49:
+  72:src/main.c    ****         wait(10);
+ 288              		.loc 1 72 9 discriminator 1 view .LVU66
+ 289 0138 0A20     		movs	r0, #10
+ 290 013a FFF7FEFF 		bl	wait
+ 291              	.LVL50:
+  73:src/main.c    ****         wait(10);
+ 292              		.loc 1 73 9 discriminator 1 view .LVU67
+ 293 013e 0A20     		movs	r0, #10
+ 294 0140 FFF7FEFF 		bl	wait
+ 295              	.LVL51:
+  74:src/main.c    ****         GPIOA->ODR ^= GPIO_ODR_ODR_6;
+ 296              		.loc 1 74 9 discriminator 1 view .LVU68
+ 297              		.loc 1 74 20 is_stmt 0 discriminator 1 view .LVU69
+ 298 0144 034A     		ldr	r2, .L9+4
+ 299 0146 5369     		ldr	r3, [r2, #20]
+ 300 0148 83F04003 		eor	r3, r3, #64
+ 301 014c 5361     		str	r3, [r2, #20]
+  22:src/main.c    ****     {
+ 302              		.loc 1 22 11 is_stmt 1 discriminator 1 view .LVU70
+ 303 014e 63E7     		b	.L7
+ 304              	.L10:
+ 305              		.align	2
+ 306              	.L9:
+ 307 0150 00380240 		.word	1073887232
+ 308 0154 00000240 		.word	1073872896
+ 309              		.cfi_endproc
+ 310              	.LFE135:
+ 312              		.global	time
+ 313              		.section	.bss.time,"aw",%nobits
+ 314              		.align	2
+ 317              	time:
+ 318 0000 00000000 		.space	4
+ 319              		.text
+ 320              	.Letext0:
+ 321              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 322              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 323              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
+ 324              		.file 5 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s 			page 8
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\nekita\AppData\Local\Temp\cco3maFG.s:20     .text.wait:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\cco3maFG.s:26     .text.wait:00000000 wait
-C:\Users\nekita\AppData\Local\Temp\cco3maFG.s:63     .text.main:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\cco3maFG.s:69     .text.main:00000000 main
-C:\Users\nekita\AppData\Local\Temp\cco3maFG.s:110    .text.main:0000002c $d
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:20     .text.wait:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:26     .text.wait:00000000 wait
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:64     .text.main:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:70     .text.main:00000000 main
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:307    .text.main:00000150 $d
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:317    .bss.time:00000000 time
+C:\Users\nekita\AppData\Local\Temp\ccEVz9Fj.s:314    .bss.time:00000000 $d
 
 NO UNDEFINED SYMBOLS

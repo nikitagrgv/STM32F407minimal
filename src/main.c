@@ -1,11 +1,17 @@
 #include "stm32f407xx.h"
 
+volatile uint32_t time = 0;
 
-void wait(uint32_t count)
+void wait(uint32_t ms)
 {
-    volatile uint32_t i = count;
-    while (i--)
-        ;
+    SysTick->VAL = 0;
+    while (ms)
+    {
+        if (SysTick->CTRL & 1 << 16)
+        {
+            ms--;
+        }
+    }
 }
 
 int main()
@@ -15,7 +21,7 @@ int main()
 
     while (1)
     {
-        wait(5e5);
+        wait(1000);
         GPIOA->ODR ^= GPIO_ODR_ODR_6;
     }
 }
