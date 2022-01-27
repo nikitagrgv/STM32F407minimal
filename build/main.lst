@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 1
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -27,56 +27,57 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 1
   24              		.thumb_func
   26              	wait:
   27              	.LVL0:
-  28              	.LFB134:
+  28              	.LFB137:
   29              		.file 1 "src/main.c"
    1:src/main.c    **** #include "stm32f407xx.h"
-   2:src/main.c    **** 
-   3:src/main.c    **** void wait(uint32_t ms)
-   4:src/main.c    **** {
-  30              		.loc 1 4 1 view -0
+   2:src/main.c    **** #include <stdio.h>
+   3:src/main.c    **** 
+   4:src/main.c    **** void wait(uint32_t ms)
+   5:src/main.c    **** {
+  30              		.loc 1 5 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-   5:src/main.c    ****     SysTick->VAL = 0;
-  35              		.loc 1 5 5 view .LVU1
-  36              		.loc 1 5 18 is_stmt 0 view .LVU2
+   6:src/main.c    ****     SysTick->VAL = 0;
+  35              		.loc 1 6 5 view .LVU1
+  36              		.loc 1 6 18 is_stmt 0 view .LVU2
   37 0000 4FF0E023 		mov	r3, #-536813568
   38 0004 0022     		movs	r2, #0
   39 0006 9A61     		str	r2, [r3, #24]
-   6:src/main.c    ****     while (ms)
-  40              		.loc 1 6 5 is_stmt 1 view .LVU3
+   7:src/main.c    ****     while (ms)
+  40              		.loc 1 7 5 is_stmt 1 view .LVU3
   41              	.L3:
-  42              		.loc 1 6 11 view .LVU4
+  42              		.loc 1 7 11 view .LVU4
   43 0008 38B1     		cbz	r0, .L5
-   7:src/main.c    ****     {
-   8:src/main.c    ****         if (SysTick->CTRL & 1 << 16)
-  44              		.loc 1 8 9 view .LVU5
-  45              		.loc 1 8 20 is_stmt 0 view .LVU6
+   8:src/main.c    ****     {
+   9:src/main.c    ****         if (SysTick->CTRL & 1 << 16)
+  44              		.loc 1 9 9 view .LVU5
+  45              		.loc 1 9 20 is_stmt 0 view .LVU6
   46 000a 4FF0E023 		mov	r3, #-536813568
   47 000e 1B69     		ldr	r3, [r3, #16]
-  48              		.loc 1 8 12 view .LVU7
+  48              		.loc 1 9 12 view .LVU7
   49 0010 13F4803F 		tst	r3, #65536
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 2
+
+
   50 0014 F8D0     		beq	.L3
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 2
-
-
-   9:src/main.c    ****         {
-  10:src/main.c    ****             ms--;
-  51              		.loc 1 10 13 is_stmt 1 view .LVU8
-  52              		.loc 1 10 15 is_stmt 0 view .LVU9
+  10:src/main.c    ****         {
+  11:src/main.c    ****             ms--;
+  51              		.loc 1 11 13 is_stmt 1 view .LVU8
+  52              		.loc 1 11 15 is_stmt 0 view .LVU9
   53 0016 0138     		subs	r0, r0, #1
   54              	.LVL1:
-  55              		.loc 1 10 15 view .LVU10
+  55              		.loc 1 11 15 view .LVU10
   56 0018 F6E7     		b	.L3
   57              	.L5:
-  11:src/main.c    ****         }
-  12:src/main.c    ****     }
-  13:src/main.c    **** }
-  58              		.loc 1 13 1 view .LVU11
+  12:src/main.c    ****         }
+  13:src/main.c    ****     }
+  14:src/main.c    **** }
+  58              		.loc 1 14 1 view .LVU11
   59 001a 7047     		bx	lr
   60              		.cfi_endproc
-  61              	.LFE134:
+  61              	.LFE137:
   63              		.section	.text.transmit,"ax",%progbits
   64              		.align	1
   65              		.global	transmit
@@ -85,100 +86,99 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 1
   68              		.thumb_func
   70              	transmit:
   71              	.LVL2:
-  72              	.LFB135:
-  14:src/main.c    **** 
-  15:src/main.c    **** void transmit(uint8_t *data, uint32_t size)
-  16:src/main.c    **** {
-  73              		.loc 1 16 1 is_stmt 1 view -0
+  72              	.LFB138:
+  15:src/main.c    **** 
+  16:src/main.c    **** void transmit(uint8_t *data, uint32_t size)
+  17:src/main.c    **** {
+  73              		.loc 1 17 1 is_stmt 1 view -0
   74              		.cfi_startproc
   75              		@ args = 0, pretend = 0, frame = 0
   76              		@ frame_needed = 0, uses_anonymous_args = 0
-  77              		.loc 1 16 1 is_stmt 0 view .LVU13
+  77              		.loc 1 17 1 is_stmt 0 view .LVU13
   78 0000 00B5     		push	{lr}
   79              	.LCFI0:
   80              		.cfi_def_cfa_offset 4
   81              		.cfi_offset 14, -4
   82 0002 8E46     		mov	lr, r1
-  17:src/main.c    ****     USART1->CR1 |= USART_CR1_TE;
-  83              		.loc 1 17 5 is_stmt 1 view .LVU14
-  84              		.loc 1 17 17 is_stmt 0 view .LVU15
+  18:src/main.c    ****     USART1->CR1 |= USART_CR1_TE;
+  83              		.loc 1 18 5 is_stmt 1 view .LVU14
+  84              		.loc 1 18 17 is_stmt 0 view .LVU15
   85 0004 0A4A     		ldr	r2, .L10
   86 0006 D368     		ldr	r3, [r2, #12]
   87 0008 43F00803 		orr	r3, r3, #8
   88 000c D360     		str	r3, [r2, #12]
-  18:src/main.c    **** 
-  19:src/main.c    ****     for (int i = 0; i < size; i++)
-  89              		.loc 1 19 5 is_stmt 1 view .LVU16
+  19:src/main.c    **** 
+  20:src/main.c    ****     for (int i = 0; i < size; i++)
+  89              		.loc 1 20 5 is_stmt 1 view .LVU16
   90              	.LBB2:
-  91              		.loc 1 19 10 view .LVU17
+  91              		.loc 1 20 10 view .LVU17
   92              	.LVL3:
-  93              		.loc 1 19 14 is_stmt 0 view .LVU18
+  93              		.loc 1 20 14 is_stmt 0 view .LVU18
   94 000e 0022     		movs	r2, #0
-  95              		.loc 1 19 5 view .LVU19
+  95              		.loc 1 20 5 view .LVU19
   96 0010 09E0     		b	.L7
   97              	.LVL4:
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 3
+
+
   98              	.L8:
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 3
-
-
-  20:src/main.c    ****     {
-  21:src/main.c    ****         while (!(USART1->SR & USART_SR_TXE))
+  21:src/main.c    ****     {
+  22:src/main.c    ****         while (!(USART1->SR & USART_SR_TXE))
+  23:src/main.c    ****         {
+  24:src/main.c    ****         }
+  99              		.loc 1 24 9 is_stmt 1 discriminator 1 view .LVU20
   22:src/main.c    ****         {
-  23:src/main.c    ****         }
-  99              		.loc 1 23 9 is_stmt 1 discriminator 1 view .LVU20
-  21:src/main.c    ****         {
- 100              		.loc 1 21 15 discriminator 1 view .LVU21
-  21:src/main.c    ****         {
- 101              		.loc 1 21 24 is_stmt 0 discriminator 1 view .LVU22
+ 100              		.loc 1 22 15 discriminator 1 view .LVU21
+  22:src/main.c    ****         {
+ 101              		.loc 1 22 24 is_stmt 0 discriminator 1 view .LVU22
  102 0012 074B     		ldr	r3, .L10
  103 0014 1B68     		ldr	r3, [r3]
-  21:src/main.c    ****         {
- 104              		.loc 1 21 15 discriminator 1 view .LVU23
+  22:src/main.c    ****         {
+ 104              		.loc 1 22 15 discriminator 1 view .LVU23
  105 0016 13F0800F 		tst	r3, #128
  106 001a FAD0     		beq	.L8
-  24:src/main.c    ****         USART1->DR = data[i];
- 107              		.loc 1 24 9 is_stmt 1 discriminator 2 view .LVU24
- 108              		.loc 1 24 26 is_stmt 0 discriminator 2 view .LVU25
+  25:src/main.c    ****         USART1->DR = data[i];
+ 107              		.loc 1 25 9 is_stmt 1 discriminator 2 view .LVU24
+ 108              		.loc 1 25 26 is_stmt 0 discriminator 2 view .LVU25
  109 001c 10F80C10 		ldrb	r1, [r0, ip]	@ zero_extendqisi2
- 110              		.loc 1 24 20 discriminator 2 view .LVU26
+ 110              		.loc 1 25 20 discriminator 2 view .LVU26
  111 0020 034B     		ldr	r3, .L10
  112 0022 5960     		str	r1, [r3, #4]
-  19:src/main.c    ****     {
- 113              		.loc 1 19 31 is_stmt 1 discriminator 2 view .LVU27
-  19:src/main.c    ****     {
- 114              		.loc 1 19 32 is_stmt 0 discriminator 2 view .LVU28
+  20:src/main.c    ****     {
+ 113              		.loc 1 20 31 is_stmt 1 discriminator 2 view .LVU27
+  20:src/main.c    ****     {
+ 114              		.loc 1 20 32 is_stmt 0 discriminator 2 view .LVU28
  115 0024 0132     		adds	r2, r2, #1
  116              	.LVL5:
  117              	.L7:
-  19:src/main.c    ****     {
- 118              		.loc 1 19 21 is_stmt 1 discriminator 1 view .LVU29
-  19:src/main.c    ****     {
- 119              		.loc 1 19 23 is_stmt 0 discriminator 1 view .LVU30
+  20:src/main.c    ****     {
+ 118              		.loc 1 20 21 is_stmt 1 discriminator 1 view .LVU29
+  20:src/main.c    ****     {
+ 119              		.loc 1 20 23 is_stmt 0 discriminator 1 view .LVU30
  120 0026 9446     		mov	ip, r2
-  19:src/main.c    ****     {
- 121              		.loc 1 19 5 discriminator 1 view .LVU31
+  20:src/main.c    ****     {
+ 121              		.loc 1 20 5 discriminator 1 view .LVU31
  122 0028 7245     		cmp	r2, lr
  123 002a F2D3     		bcc	.L8
  124              	.LBE2:
-  25:src/main.c    ****     }
-  26:src/main.c    **** }
- 125              		.loc 1 26 1 view .LVU32
+  26:src/main.c    ****     }
+  27:src/main.c    **** }
+ 125              		.loc 1 27 1 view .LVU32
  126 002c 5DF804FB 		ldr	pc, [sp], #4
  127              	.L11:
  128              		.align	2
  129              	.L10:
  130 0030 00100140 		.word	1073811456
  131              		.cfi_endproc
- 132              	.LFE135:
+ 132              	.LFE138:
  134              		.section	.rodata.main.str1.4,"aMS",%progbits,1
  135              		.align	2
  136              	.LC0:
- 137 0000 65667220 		.ascii	"efr pidor\012\000"
- 137      7069646F 
- 137      720A00
+ 137 0000 64617461 		.ascii	"data\012\000"
+ 137      0A00
  138              		.section	.text.main,"ax",%progbits
  139              		.align	1
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 4
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 4
 
 
  140              		.global	main
@@ -186,147 +186,154 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 1
  142              		.thumb
  143              		.thumb_func
  145              	main:
- 146              	.LFB136:
-  27:src/main.c    **** 
-  28:src/main.c    **** int main()
-  29:src/main.c    **** {
- 147              		.loc 1 29 1 is_stmt 1 view -0
+ 146              	.LFB139:
+  28:src/main.c    **** 
+  29:src/main.c    **** int main()
+  30:src/main.c    **** {
+ 147              		.loc 1 30 1 is_stmt 1 view -0
  148              		.cfi_startproc
- 149              		@ Volatile: function does not return.
- 150              		@ args = 0, pretend = 0, frame = 16
- 151              		@ frame_needed = 0, uses_anonymous_args = 0
- 152 0000 00B5     		push	{lr}
- 153              	.LCFI1:
- 154              		.cfi_def_cfa_offset 4
- 155              		.cfi_offset 14, -4
- 156 0002 85B0     		sub	sp, sp, #20
- 157              	.LCFI2:
- 158              		.cfi_def_cfa_offset 24
-  30:src/main.c    ****     // GPIO and clock for LED2
-  31:src/main.c    ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
- 159              		.loc 1 31 5 view .LVU34
- 160              		.loc 1 31 18 is_stmt 0 view .LVU35
- 161 0004 194A     		ldr	r2, .L15
- 162 0006 136B     		ldr	r3, [r2, #48]
- 163 0008 43F00103 		orr	r3, r3, #1
- 164 000c 1363     		str	r3, [r2, #48]
-  32:src/main.c    ****     GPIOA->MODER |= GPIO_MODER_MODER6_0;
- 165              		.loc 1 32 5 is_stmt 1 view .LVU36
- 166              		.loc 1 32 18 is_stmt 0 view .LVU37
- 167 000e 184B     		ldr	r3, .L15+4
- 168 0010 1968     		ldr	r1, [r3]
- 169 0012 41F48051 		orr	r1, r1, #4096
- 170 0016 1960     		str	r1, [r3]
-  33:src/main.c    **** 
-  34:src/main.c    ****     // GPIO and clock for USART1 (PA9 PA10)
-  35:src/main.c    ****     RCC->APB2ENR |= RCC_APB2ENR_USART1EN_Msk;
- 171              		.loc 1 35 5 is_stmt 1 view .LVU38
- 172              		.loc 1 35 18 is_stmt 0 view .LVU39
- 173 0018 516C     		ldr	r1, [r2, #68]
- 174 001a 41F01001 		orr	r1, r1, #16
- 175 001e 5164     		str	r1, [r2, #68]
-  36:src/main.c    **** 
-  37:src/main.c    ****     GPIOA->MODER |= GPIO_MODER_MODE9_1;
- 176              		.loc 1 37 5 is_stmt 1 view .LVU40
- 177              		.loc 1 37 18 is_stmt 0 view .LVU41
- 178 0020 1A68     		ldr	r2, [r3]
- 179 0022 42F40022 		orr	r2, r2, #524288
- 180 0026 1A60     		str	r2, [r3]
-  38:src/main.c    ****     GPIOA->AFR[1] |= GPIO_AFRH_AFSEL9_0 | GPIO_AFRH_AFSEL9_1 | GPIO_AFRH_AFSEL9_2;
- 181              		.loc 1 38 5 is_stmt 1 view .LVU42
- 182              		.loc 1 38 19 is_stmt 0 view .LVU43
- 183 0028 5A6A     		ldr	r2, [r3, #36]
- 184 002a 42F07002 		orr	r2, r2, #112
- 185 002e 5A62     		str	r2, [r3, #36]
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 5
+ 149              		@ args = 0, pretend = 0, frame = 256
+ 150              		@ frame_needed = 0, uses_anonymous_args = 0
+ 151 0000 00B5     		push	{lr}
+ 152              	.LCFI1:
+ 153              		.cfi_def_cfa_offset 4
+ 154              		.cfi_offset 14, -4
+ 155 0002 C1B0     		sub	sp, sp, #260
+ 156              	.LCFI2:
+ 157              		.cfi_def_cfa_offset 264
+  31:src/main.c    ****     // GPIO and clock for LED2
+  32:src/main.c    ****     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+ 158              		.loc 1 32 5 view .LVU34
+ 159              		.loc 1 32 18 is_stmt 0 view .LVU35
+ 160 0004 184A     		ldr	r2, .L15
+ 161 0006 136B     		ldr	r3, [r2, #48]
+ 162 0008 43F00103 		orr	r3, r3, #1
+ 163 000c 1363     		str	r3, [r2, #48]
+  33:src/main.c    ****     GPIOA->MODER |= GPIO_MODER_MODER6_0;
+ 164              		.loc 1 33 5 is_stmt 1 view .LVU36
+ 165              		.loc 1 33 18 is_stmt 0 view .LVU37
+ 166 000e 174B     		ldr	r3, .L15+4
+ 167 0010 1968     		ldr	r1, [r3]
+ 168 0012 41F48051 		orr	r1, r1, #4096
+ 169 0016 1960     		str	r1, [r3]
+  34:src/main.c    **** 
+  35:src/main.c    ****     // GPIO and clock for USART1 (PA9 PA10)
+  36:src/main.c    ****     RCC->APB2ENR |= RCC_APB2ENR_USART1EN_Msk;
+ 170              		.loc 1 36 5 is_stmt 1 view .LVU38
+ 171              		.loc 1 36 18 is_stmt 0 view .LVU39
+ 172 0018 516C     		ldr	r1, [r2, #68]
+ 173 001a 41F01001 		orr	r1, r1, #16
+ 174 001e 5164     		str	r1, [r2, #68]
+  37:src/main.c    **** 
+  38:src/main.c    ****     GPIOA->MODER |= GPIO_MODER_MODE9_1;
+ 175              		.loc 1 38 5 is_stmt 1 view .LVU40
+ 176              		.loc 1 38 18 is_stmt 0 view .LVU41
+ 177 0020 1A68     		ldr	r2, [r3]
+ 178 0022 42F40022 		orr	r2, r2, #524288
+ 179 0026 1A60     		str	r2, [r3]
+  39:src/main.c    ****     GPIOA->AFR[1] |= GPIO_AFRH_AFSEL9_0 | GPIO_AFRH_AFSEL9_1 | GPIO_AFRH_AFSEL9_2;
+ 180              		.loc 1 39 5 is_stmt 1 view .LVU42
+ 181              		.loc 1 39 19 is_stmt 0 view .LVU43
+ 182 0028 5A6A     		ldr	r2, [r3, #36]
+ 183 002a 42F07002 		orr	r2, r2, #112
+ 184 002e 5A62     		str	r2, [r3, #36]
+  40:src/main.c    **** 
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 5
 
 
-  39:src/main.c    **** 
-  40:src/main.c    ****     // GPIOA->MODER |= GPIO_MODER_MODE10_1;
-  41:src/main.c    ****     // GPIOA->AFR[1] |= GPIO_AFRH_AFSEL10_0 | GPIO_AFRH_AFSEL10_1 | GPIO_AFRH_AFSEL10_2;
-  42:src/main.c    **** 
-  43:src/main.c    ****     // configuration for USART1
-  44:src/main.c    ****     USART1->BRR = (uint16_t)(16000000 / 115200);
- 186              		.loc 1 44 5 is_stmt 1 view .LVU44
- 187              		.loc 1 44 17 is_stmt 0 view .LVU45
- 188 0030 A3F57043 		sub	r3, r3, #61440
- 189 0034 8A22     		movs	r2, #138
- 190 0036 9A60     		str	r2, [r3, #8]
-  45:src/main.c    ****     USART1->CR1 |= USART_CR1_UE_Msk;
- 191              		.loc 1 45 5 is_stmt 1 view .LVU46
- 192              		.loc 1 45 17 is_stmt 0 view .LVU47
- 193 0038 DA68     		ldr	r2, [r3, #12]
- 194 003a 42F40052 		orr	r2, r2, #8192
- 195 003e DA60     		str	r2, [r3, #12]
- 196              	.L13:
-  46:src/main.c    **** 
-  47:src/main.c    ****     while (1)
- 197              		.loc 1 47 5 is_stmt 1 discriminator 1 view .LVU48
- 198              	.LBB3:
-  48:src/main.c    ****     {
-  49:src/main.c    ****         wait(500);
- 199              		.loc 1 49 9 discriminator 1 view .LVU49
- 200 0040 4FF4FA70 		mov	r0, #500
- 201 0044 FFF7FEFF 		bl	wait
- 202              	.LVL6:
-  50:src/main.c    **** 
-  51:src/main.c    ****         uint8_t data[] = "efr pidor\n";
- 203              		.loc 1 51 9 discriminator 1 view .LVU50
- 204              		.loc 1 51 17 is_stmt 0 discriminator 1 view .LVU51
- 205 0048 0A4A     		ldr	r2, .L15+8
- 206 004a 01AB     		add	r3, sp, #4
- 207 004c 07CA     		ldm	r2, {r0, r1, r2}
- 208 004e 03C3     		stmia	r3!, {r0, r1}
- 209 0050 23F8022B 		strh	r2, [r3], #2	@ movhi
- 210 0054 120C     		lsrs	r2, r2, #16
- 211 0056 1A70     		strb	r2, [r3]
-  52:src/main.c    ****         transmit(data, sizeof(data) - 1);
- 212              		.loc 1 52 9 is_stmt 1 discriminator 1 view .LVU52
- 213 0058 0A21     		movs	r1, #10
- 214 005a 01A8     		add	r0, sp, #4
- 215 005c FFF7FEFF 		bl	transmit
- 216              	.LVL7:
-  53:src/main.c    ****         GPIOA->ODR ^= GPIO_ODR_ODR_6;
- 217              		.loc 1 53 9 discriminator 1 view .LVU53
- 218              		.loc 1 53 20 is_stmt 0 discriminator 1 view .LVU54
- 219 0060 034A     		ldr	r2, .L15+4
- 220 0062 5369     		ldr	r3, [r2, #20]
- 221 0064 83F04003 		eor	r3, r3, #64
- 222 0068 5361     		str	r3, [r2, #20]
- 223              	.LBE3:
-  47:src/main.c    ****     {
- 224              		.loc 1 47 11 is_stmt 1 discriminator 1 view .LVU55
- 225 006a E9E7     		b	.L13
- 226              	.L16:
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 6
+  41:src/main.c    ****     // GPIOA->MODER |= GPIO_MODER_MODE10_1;
+  42:src/main.c    ****     // GPIOA->AFR[1] |= GPIO_AFRH_AFSEL10_0 | GPIO_AFRH_AFSEL10_1 | GPIO_AFRH_AFSEL10_2;
+  43:src/main.c    **** 
+  44:src/main.c    ****     // configuration for USART1
+  45:src/main.c    ****     USART1->BRR = (uint16_t)(16000000 / 115200);
+ 185              		.loc 1 45 5 is_stmt 1 view .LVU44
+ 186              		.loc 1 45 17 is_stmt 0 view .LVU45
+ 187 0030 A3F57043 		sub	r3, r3, #61440
+ 188 0034 8A22     		movs	r2, #138
+ 189 0036 9A60     		str	r2, [r3, #8]
+  46:src/main.c    ****     USART1->CR1 |= USART_CR1_UE_Msk;
+ 190              		.loc 1 46 5 is_stmt 1 view .LVU46
+ 191              		.loc 1 46 17 is_stmt 0 view .LVU47
+ 192 0038 DA68     		ldr	r2, [r3, #12]
+ 193 003a 42F40052 		orr	r2, r2, #8192
+ 194 003e DA60     		str	r2, [r3, #12]
+  47:src/main.c    **** 
+  48:src/main.c    ****     uint32_t num = 0;
+ 195              		.loc 1 48 5 is_stmt 1 view .LVU48
+ 196              	.LVL6:
+ 197              	.L13:
+  49:src/main.c    ****     while (1)
+ 198              		.loc 1 49 5 discriminator 1 view .LVU49
+ 199              	.LBB3:
+  50:src/main.c    ****     {
+  51:src/main.c    ****         num++;
+ 200              		.loc 1 51 9 discriminator 1 view .LVU50
+  52:src/main.c    **** 
+  53:src/main.c    ****         char data[256];
+ 201              		.loc 1 53 9 discriminator 1 view .LVU51
+  54:src/main.c    ****         uint32_t size = 0;
+ 202              		.loc 1 54 9 discriminator 1 view .LVU52
+  55:src/main.c    ****         size = sprintf(data, "data\n");
+ 203              		.loc 1 55 9 discriminator 1 view .LVU53
+ 204              		.loc 1 55 16 is_stmt 0 discriminator 1 view .LVU54
+ 205 0040 0B4B     		ldr	r3, .L15+8
+ 206 0042 93E80300 		ldm	r3, {r0, r1}
+ 207 0046 0090     		str	r0, [sp]
+ 208 0048 ADF80410 		strh	r1, [sp, #4]	@ movhi
+ 209              	.LVL7:
+  56:src/main.c    ****         transmit(data, size);
+ 210              		.loc 1 56 9 is_stmt 1 discriminator 1 view .LVU55
+ 211 004c 0521     		movs	r1, #5
+ 212 004e 6846     		mov	r0, sp
+ 213 0050 FFF7FEFF 		bl	transmit
+ 214              	.LVL8:
+  57:src/main.c    **** 
+  58:src/main.c    ****         wait(1000);
+ 215              		.loc 1 58 9 discriminator 1 view .LVU56
+ 216 0054 4FF47A70 		mov	r0, #1000
+ 217 0058 FFF7FEFF 		bl	wait
+ 218              	.LVL9:
+  59:src/main.c    ****         GPIOA->ODR ^= GPIO_ODR_ODR_6;
+ 219              		.loc 1 59 9 discriminator 1 view .LVU57
+ 220              		.loc 1 59 20 is_stmt 0 discriminator 1 view .LVU58
+ 221 005c 034A     		ldr	r2, .L15+4
+ 222 005e 5369     		ldr	r3, [r2, #20]
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 6
 
 
- 227              		.align	2
- 228              	.L15:
- 229 006c 00380240 		.word	1073887232
- 230 0070 00000240 		.word	1073872896
- 231 0074 00000000 		.word	.LC0
- 232              		.cfi_endproc
- 233              	.LFE136:
- 235              		.text
- 236              	.Letext0:
- 237              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 238              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 239              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
- 240              		.file 5 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s 			page 7
+ 223 0060 83F04003 		eor	r3, r3, #64
+ 224 0064 5361     		str	r3, [r2, #20]
+ 225              	.LBE3:
+  49:src/main.c    ****     {
+ 226              		.loc 1 49 11 is_stmt 1 discriminator 1 view .LVU59
+ 227 0066 EBE7     		b	.L13
+ 228              	.L16:
+ 229              		.align	2
+ 230              	.L15:
+ 231 0068 00380240 		.word	1073887232
+ 232 006c 00000240 		.word	1073872896
+ 233 0070 00000000 		.word	.LC0
+ 234              		.cfi_endproc
+ 235              	.LFE139:
+ 237              		.text
+ 238              	.Letext0:
+ 239              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 240              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 241              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
+ 242              		.file 5 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s 			page 7
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:20     .text.wait:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:26     .text.wait:00000000 wait
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:64     .text.transmit:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:70     .text.transmit:00000000 transmit
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:130    .text.transmit:00000030 $d
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:135    .rodata.main.str1.4:00000000 $d
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:139    .text.main:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:145    .text.main:00000000 main
-C:\Users\nekita\AppData\Local\Temp\ccCsmWNE.s:229    .text.main:0000006c $d
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:20     .text.wait:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:26     .text.wait:00000000 wait
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:64     .text.transmit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:70     .text.transmit:00000000 transmit
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:130    .text.transmit:00000030 $d
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:135    .rodata.main.str1.4:00000000 $d
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:139    .text.main:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:145    .text.main:00000000 main
+C:\Users\nekita\AppData\Local\Temp\ccKL4e9A.s:231    .text.main:00000068 $d
 
 NO UNDEFINED SYMBOLS

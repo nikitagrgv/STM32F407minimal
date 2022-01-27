@@ -1,4 +1,5 @@
 #include "stm32f407xx.h"
+#include <stdio.h>
 
 void wait(uint32_t ms)
 {
@@ -44,12 +45,17 @@ int main()
     USART1->BRR = (uint16_t)(16000000 / 115200);
     USART1->CR1 |= USART_CR1_UE_Msk;
 
+    uint32_t num = 0;
     while (1)
     {
-        wait(500);
+        num++;
 
-        uint8_t data[] = "some data\n";
-        transmit(data, sizeof(data) - 1);
+        char data[256];
+        uint32_t size = 0;
+        size = sprintf(data, "data\n");
+        transmit(data, size);
+
+        wait(1000);
         GPIOA->ODR ^= GPIO_ODR_ODR_6;
     }
 }
