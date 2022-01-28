@@ -396,10 +396,10 @@ LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc
  .debug_ranges  0x00000010       0x20 build/main.o
  .debug_ranges  0x00000030       0x20 build/startup_stm32f407xx.o
 
-.debug_line     0x00000000      0x4e0
- .debug_line    0x00000000      0x17c build/system_stm32f4xx.o
- .debug_line    0x0000017c      0x2ee build/main.o
- .debug_line    0x0000046a       0x76 build/startup_stm32f407xx.o
+.debug_line     0x00000000      0x4de
+ .debug_line    0x00000000      0x17a build/system_stm32f4xx.o
+ .debug_line    0x0000017a      0x2ee build/main.o
+ .debug_line    0x00000468       0x76 build/startup_stm32f407xx.o
 
 .debug_str      0x00000000      0x35f
  .debug_str     0x00000000      0x1ca build/system_stm32f4xx.o
