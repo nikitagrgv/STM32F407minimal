@@ -52,10 +52,10 @@ int main()
 
         char data[256];
         uint32_t size = 0;
-        size = sprintf(data, "data\n");
+        size = sprintf(data, "dat1\n");
         transmit(data, size);
 
-        wait(1000);
+        wait(1000*1000);
         GPIOA->ODR ^= GPIO_ODR_ODR_6;
     }
 }

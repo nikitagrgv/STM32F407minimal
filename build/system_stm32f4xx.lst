@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s 			page 1
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cciIfgks.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s 			page 1
   28:src/system_stm32f4xx.c ****  * @retval None
   29:src/system_stm32f4xx.c ****  */
   30:src/system_stm32f4xx.c **** void SystemInit(void)
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s 			page 2
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cciIfgks.s 			page 2
 
 
   31:src/system_stm32f4xx.c **** {
@@ -71,35 +71,35 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s 			page 1
   33:src/system_stm32f4xx.c ****     SCB->CPACR |= ((3UL << 10 * 2) | (3UL << 11 * 2)); /* set CP10 and CP11 Full Access */
   34              		.loc 1 33 5 view .LVU1
   35              		.loc 1 33 16 is_stmt 0 view .LVU2
-  36 0000 094A     		ldr	r2, .L2
+  36 0000 084A     		ldr	r2, .L2
   37 0002 D2F88830 		ldr	r3, [r2, #136]
   38 0006 43F47003 		orr	r3, r3, #15728640
   39 000a C2F88830 		str	r3, [r2, #136]
   34:src/system_stm32f4xx.c **** 
-  35:src/system_stm32f4xx.c ****     SysTick->LOAD = 16000 - 1;
+  35:src/system_stm32f4xx.c ****     SysTick->LOAD = 16000 / 1000 - 1;
   40              		.loc 1 35 5 is_stmt 1 view .LVU3
   41              		.loc 1 35 19 is_stmt 0 view .LVU4
   42 000e 4FF0E023 		mov	r3, #-536813568
-  43 0012 43F67F62 		movw	r2, #15999
-  44 0016 5A61     		str	r2, [r3, #20]
+  43 0012 0F22     		movs	r2, #15
+  44 0014 5A61     		str	r2, [r3, #20]
   36:src/system_stm32f4xx.c ****     SysTick->VAL = 0;
   45              		.loc 1 36 5 is_stmt 1 view .LVU5
   46              		.loc 1 36 18 is_stmt 0 view .LVU6
-  47 0018 0022     		movs	r2, #0
-  48 001a 9A61     		str	r2, [r3, #24]
+  47 0016 0022     		movs	r2, #0
+  48 0018 9A61     		str	r2, [r3, #24]
   37:src/system_stm32f4xx.c ****     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk;
   49              		.loc 1 37 5 is_stmt 1 view .LVU7
   50              		.loc 1 37 19 is_stmt 0 view .LVU8
-  51 001c 1A69     		ldr	r2, [r3, #16]
-  52 001e 42F00502 		orr	r2, r2, #5
-  53 0022 1A61     		str	r2, [r3, #16]
+  51 001a 1A69     		ldr	r2, [r3, #16]
+  52 001c 42F00502 		orr	r2, r2, #5
+  53 0020 1A61     		str	r2, [r3, #16]
   38:src/system_stm32f4xx.c **** }
   54              		.loc 1 38 1 view .LVU9
-  55 0024 7047     		bx	lr
+  55 0022 7047     		bx	lr
   56              	.L3:
-  57 0026 00BF     		.align	2
+  57              		.align	2
   58              	.L2:
-  59 0028 00ED00E0 		.word	-536810240
+  59 0024 00ED00E0 		.word	-536810240
   60              		.cfi_endproc
   61              	.LFE134:
   63              		.text
@@ -107,13 +107,13 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s 			page 1
   65              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
   66              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
   67              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s 			page 3
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\cciIfgks.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system_stm32f4xx.c
-C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s:20     .text.SystemInit:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s:26     .text.SystemInit:00000000 SystemInit
-C:\Users\nekita\AppData\Local\Temp\ccDHae9f.s:59     .text.SystemInit:00000028 $d
+C:\Users\nekita\AppData\Local\Temp\cciIfgks.s:20     .text.SystemInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\cciIfgks.s:26     .text.SystemInit:00000000 SystemInit
+C:\Users\nekita\AppData\Local\Temp\cciIfgks.s:59     .text.SystemInit:00000024 $d
 
 NO UNDEFINED SYMBOLS

@@ -126,15 +126,15 @@ LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc
  .text          0x08000188       0x40 c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.text*)
  .text.SystemInit
-                0x080001c8       0x2c build/system_stm32f4xx.o
+                0x080001c8       0x28 build/system_stm32f4xx.o
                 0x080001c8                SystemInit
- .text.wait     0x080001f4       0x1c build/main.o
-                0x080001f4                wait
+ .text.wait     0x080001f0       0x1c build/main.o
+                0x080001f0                wait
  .text.transmit
-                0x08000210       0x34 build/main.o
-                0x08000210                transmit
- .text.main     0x08000244       0x74 build/main.o
-                0x08000244                main
+                0x0800020c       0x34 build/main.o
+                0x0800020c                transmit
+ .text.main     0x08000240       0x78 build/main.o
+                0x08000240                main
  .text.Reset_Handler
                 0x080002b8       0x50 build/startup_stm32f407xx.o
                 0x080002b8                Reset_Handler
@@ -373,10 +373,10 @@ LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc
 LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libm.a
 LOAD c:/program files (x86)/gnu arm embedded toolchain/10 2021.10/bin/../lib/gcc/arm-none-eabi/10.3.1/thumb/v7e-m+fp/hard\libgcc.a
 
-.debug_info     0x00000000      0x8ac
+.debug_info     0x00000000      0x8ae
  .debug_info    0x00000000      0x2f9 build/system_stm32f4xx.o
- .debug_info    0x000002f9      0x591 build/main.o
- .debug_info    0x0000088a       0x22 build/startup_stm32f407xx.o
+ .debug_info    0x000002f9      0x593 build/main.o
+ .debug_info    0x0000088c       0x22 build/startup_stm32f407xx.o
 
 .debug_abbrev   0x00000000      0x26b
  .debug_abbrev  0x00000000       0xb5 build/system_stm32f4xx.o
