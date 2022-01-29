@@ -56,6 +56,7 @@ int main()
 {
     config();
 
+
     while (1)
     {
         char data[256];
