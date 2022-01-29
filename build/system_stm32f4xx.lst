@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s 			page 1
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -19,75 +19,257 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s 			page 1
   16              		.text
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
-  19              		.section	.text.SystemInit,"ax",%progbits
+  19              		.section	.text.ClockInit,"ax",%progbits
   20              		.align	1
-  21              		.global	SystemInit
+  21              		.global	ClockInit
   22              		.syntax unified
   23              		.thumb
   24              		.thumb_func
-  26              	SystemInit:
-  27              	.LFB134:
+  26              	ClockInit:
+  27              	.LFB135:
   28              		.file 1 "src/system_stm32f4xx.c"
    1:src/system_stm32f4xx.c **** #include "stm32f4xx.h"
    2:src/system_stm32f4xx.c **** 
    3:src/system_stm32f4xx.c **** void SystemInit(void)
    4:src/system_stm32f4xx.c **** {
-  29              		.loc 1 4 1 view -0
+   5:src/system_stm32f4xx.c ****     /* FPU settings ------------------------------------------------------------*/
+   6:src/system_stm32f4xx.c ****     SCB->CPACR |= ((3UL << 10 * 2) | (3UL << 11 * 2)); /* set CP10 and CP11 Full Access */
+   7:src/system_stm32f4xx.c **** 
+   8:src/system_stm32f4xx.c ****     ClockInit();
+   9:src/system_stm32f4xx.c ****     SysTickInit();
+  10:src/system_stm32f4xx.c **** }
+  11:src/system_stm32f4xx.c **** 
+  12:src/system_stm32f4xx.c **** void ClockInit()
+  13:src/system_stm32f4xx.c **** {
+  29              		.loc 1 13 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              		@ link register save eliminated.
-   5:src/system_stm32f4xx.c ****     /* FPU settings ------------------------------------------------------------*/
+  14:src/system_stm32f4xx.c ****     // setting PLL
+  15:src/system_stm32f4xx.c ****     // PLLP = 2 by default
+  16:src/system_stm32f4xx.c ****     // PLLN = 168
+  17:src/system_stm32f4xx.c ****     RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLN_Msk;
+  34              		.loc 1 17 5 view .LVU1
+  35              		.loc 1 17 18 is_stmt 0 view .LVU2
+  36 0000 194B     		ldr	r3, .L4
+  37 0002 5A68     		ldr	r2, [r3, #4]
+  38 0004 22F4FF42 		bic	r2, r2, #32640
+  39 0008 22F04002 		bic	r2, r2, #64
+  40 000c 5A60     		str	r2, [r3, #4]
+  18:src/system_stm32f4xx.c ****     RCC->PLLCFGR |= 168UL << RCC_PLLCFGR_PLLN_Pos;
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s 			page 2
+
+
+  41              		.loc 1 18 5 is_stmt 1 view .LVU3
+  42              		.loc 1 18 18 is_stmt 0 view .LVU4
+  43 000e 5A68     		ldr	r2, [r3, #4]
+  44 0010 42F42852 		orr	r2, r2, #10752
+  45 0014 5A60     		str	r2, [r3, #4]
+  19:src/system_stm32f4xx.c ****     // PLLM = 8
+  20:src/system_stm32f4xx.c ****     RCC->PLLCFGR &= ~RCC_PLLCFGR_PLLM_Msk;
+  46              		.loc 1 20 5 is_stmt 1 view .LVU5
+  47              		.loc 1 20 18 is_stmt 0 view .LVU6
+  48 0016 5A68     		ldr	r2, [r3, #4]
+  49 0018 22F03F02 		bic	r2, r2, #63
+  50 001c 5A60     		str	r2, [r3, #4]
+  21:src/system_stm32f4xx.c ****     RCC->PLLCFGR |= 8UL << RCC_PLLCFGR_PLLM_Pos;
+  51              		.loc 1 21 5 is_stmt 1 view .LVU7
+  52              		.loc 1 21 18 is_stmt 0 view .LVU8
+  53 001e 5A68     		ldr	r2, [r3, #4]
+  54 0020 42F00802 		orr	r2, r2, #8
+  55 0024 5A60     		str	r2, [r3, #4]
+  22:src/system_stm32f4xx.c **** 
+  23:src/system_stm32f4xx.c ****     // PLL turn on, waiting
+  24:src/system_stm32f4xx.c ****     RCC->CR |= RCC_CR_PLLON_Msk;
+  56              		.loc 1 24 5 is_stmt 1 view .LVU9
+  57              		.loc 1 24 13 is_stmt 0 view .LVU10
+  58 0026 1A68     		ldr	r2, [r3]
+  59 0028 42F08072 		orr	r2, r2, #16777216
+  60 002c 1A60     		str	r2, [r3]
+  25:src/system_stm32f4xx.c ****     while (RCC->CR & RCC_CR_PLLRDY_Msk)
+  61              		.loc 1 25 5 is_stmt 1 view .LVU11
+  62              	.L2:
+  26:src/system_stm32f4xx.c ****     {
+  27:src/system_stm32f4xx.c ****     }
+  63              		.loc 1 27 5 discriminator 1 view .LVU12
+  25:src/system_stm32f4xx.c ****     while (RCC->CR & RCC_CR_PLLRDY_Msk)
+  64              		.loc 1 25 11 discriminator 1 view .LVU13
+  25:src/system_stm32f4xx.c ****     while (RCC->CR & RCC_CR_PLLRDY_Msk)
+  65              		.loc 1 25 15 is_stmt 0 discriminator 1 view .LVU14
+  66 002e 0E4B     		ldr	r3, .L4
+  67 0030 1B68     		ldr	r3, [r3]
+  25:src/system_stm32f4xx.c ****     while (RCC->CR & RCC_CR_PLLRDY_Msk)
+  68              		.loc 1 25 11 discriminator 1 view .LVU15
+  69 0032 13F0007F 		tst	r3, #33554432
+  70 0036 FAD1     		bne	.L2
+  28:src/system_stm32f4xx.c **** 
+  29:src/system_stm32f4xx.c ****     // FLASH latency 5WS
+  30:src/system_stm32f4xx.c ****     FLASH->ACR |= FLASH_ACR_LATENCY_5WS;
+  71              		.loc 1 30 5 is_stmt 1 view .LVU16
+  72              		.loc 1 30 16 is_stmt 0 view .LVU17
+  73 0038 0C4A     		ldr	r2, .L4+4
+  74 003a 1368     		ldr	r3, [r2]
+  75 003c 43F00503 		orr	r3, r3, #5
+  76 0040 1360     		str	r3, [r2]
+  31:src/system_stm32f4xx.c **** 
+  32:src/system_stm32f4xx.c ****     // clock prescalers
+  33:src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
+  77              		.loc 1 33 5 is_stmt 1 view .LVU18
+  78              		.loc 1 33 15 is_stmt 0 view .LVU19
+  79 0042 094B     		ldr	r3, .L4
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s 			page 3
+
+
+  80 0044 9A68     		ldr	r2, [r3, #8]
+  81 0046 42F4A052 		orr	r2, r2, #5120
+  82 004a 9A60     		str	r2, [r3, #8]
+  34:src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
+  83              		.loc 1 34 5 is_stmt 1 view .LVU20
+  84              		.loc 1 34 15 is_stmt 0 view .LVU21
+  85 004c 9A68     		ldr	r2, [r3, #8]
+  86 004e 42F40042 		orr	r2, r2, #32768
+  87 0052 9A60     		str	r2, [r3, #8]
+  35:src/system_stm32f4xx.c **** 
+  36:src/system_stm32f4xx.c ****     // switch to PLL, waiting
+  37:src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_SW_PLL;
+  88              		.loc 1 37 5 is_stmt 1 view .LVU22
+  89              		.loc 1 37 15 is_stmt 0 view .LVU23
+  90 0054 9A68     		ldr	r2, [r3, #8]
+  91 0056 42F00202 		orr	r2, r2, #2
+  92 005a 9A60     		str	r2, [r3, #8]
+  38:src/system_stm32f4xx.c ****     while (RCC->CFGR & RCC_CFGR_SWS_PLL)
+  93              		.loc 1 38 5 is_stmt 1 view .LVU24
+  94              	.L3:
+  39:src/system_stm32f4xx.c ****     {
+  40:src/system_stm32f4xx.c ****     }
+  95              		.loc 1 40 5 discriminator 1 view .LVU25
+  38:src/system_stm32f4xx.c ****     while (RCC->CFGR & RCC_CFGR_SWS_PLL)
+  96              		.loc 1 38 11 discriminator 1 view .LVU26
+  38:src/system_stm32f4xx.c ****     while (RCC->CFGR & RCC_CFGR_SWS_PLL)
+  97              		.loc 1 38 15 is_stmt 0 discriminator 1 view .LVU27
+  98 005c 024B     		ldr	r3, .L4
+  99 005e 9B68     		ldr	r3, [r3, #8]
+  38:src/system_stm32f4xx.c ****     while (RCC->CFGR & RCC_CFGR_SWS_PLL)
+ 100              		.loc 1 38 11 discriminator 1 view .LVU28
+ 101 0060 13F0080F 		tst	r3, #8
+ 102 0064 FAD1     		bne	.L3
+  41:src/system_stm32f4xx.c **** }
+ 103              		.loc 1 41 1 view .LVU29
+ 104 0066 7047     		bx	lr
+ 105              	.L5:
+ 106              		.align	2
+ 107              	.L4:
+ 108 0068 00380240 		.word	1073887232
+ 109 006c 003C0240 		.word	1073888256
+ 110              		.cfi_endproc
+ 111              	.LFE135:
+ 113              		.section	.text.SysTickInit,"ax",%progbits
+ 114              		.align	1
+ 115              		.global	SysTickInit
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 120              	SysTickInit:
+ 121              	.LFB136:
+  42:src/system_stm32f4xx.c **** 
+  43:src/system_stm32f4xx.c **** void SysTickInit()
+  44:src/system_stm32f4xx.c **** {
+ 122              		.loc 1 44 1 is_stmt 1 view -0
+ 123              		.cfi_startproc
+ 124              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s 			page 4
+
+
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+  45:src/system_stm32f4xx.c ****     // SysTick for 1us
+  46:src/system_stm32f4xx.c ****     SysTick->LOAD = 168e6 / 1e6 - 1;
+ 127              		.loc 1 46 5 view .LVU31
+ 128              		.loc 1 46 19 is_stmt 0 view .LVU32
+ 129 0000 4FF0E023 		mov	r3, #-536813568
+ 130 0004 A722     		movs	r2, #167
+ 131 0006 5A61     		str	r2, [r3, #20]
+  47:src/system_stm32f4xx.c ****     SysTick->VAL = 0;
+ 132              		.loc 1 47 5 is_stmt 1 view .LVU33
+ 133              		.loc 1 47 18 is_stmt 0 view .LVU34
+ 134 0008 0022     		movs	r2, #0
+ 135 000a 9A61     		str	r2, [r3, #24]
+  48:src/system_stm32f4xx.c ****     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk;
+ 136              		.loc 1 48 5 is_stmt 1 view .LVU35
+ 137              		.loc 1 48 19 is_stmt 0 view .LVU36
+ 138 000c 1A69     		ldr	r2, [r3, #16]
+ 139 000e 42F00502 		orr	r2, r2, #5
+ 140 0012 1A61     		str	r2, [r3, #16]
+  49:src/system_stm32f4xx.c **** }...
+ 141              		.loc 1 49 1 view .LVU37
+ 142 0014 7047     		bx	lr
+ 143              		.cfi_endproc
+ 144              	.LFE136:
+ 146              		.section	.text.SystemInit,"ax",%progbits
+ 147              		.align	1
+ 148              		.global	SystemInit
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 153              	SystemInit:
+ 154              	.LFB134:
+   4:src/system_stm32f4xx.c **** {
+ 155              		.loc 1 4 1 is_stmt 1 view -0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159 0000 08B5     		push	{r3, lr}
+ 160              	.LCFI0:
+ 161              		.cfi_def_cfa_offset 8
+ 162              		.cfi_offset 3, -8
+ 163              		.cfi_offset 14, -4
    6:src/system_stm32f4xx.c ****     SCB->CPACR |= ((3UL << 10 * 2) | (3UL << 11 * 2)); /* set CP10 and CP11 Full Access */
-  34              		.loc 1 6 5 view .LVU1
-  35              		.loc 1 6 16 is_stmt 0 view .LVU2
-  36 0000 084A     		ldr	r2, .L2
-  37 0002 D2F88830 		ldr	r3, [r2, #136]
-  38 0006 43F47003 		orr	r3, r3, #15728640
-  39 000a C2F88830 		str	r3, [r2, #136]
-   7:src/system_stm32f4xx.c **** 
-   8:src/system_stm32f4xx.c ****     // SysTick for 1us
-   9:src/system_stm32f4xx.c ****     SysTick->LOAD = 16000 / 1000 - 1;
-  40              		.loc 1 9 5 is_stmt 1 view .LVU3
-  41              		.loc 1 9 19 is_stmt 0 view .LVU4
-  42 000e 4FF0E023 		mov	r3, #-536813568
-  43 0012 0F22     		movs	r2, #15
-  44 0014 5A61     		str	r2, [r3, #20]
-  10:src/system_stm32f4xx.c ****     SysTick->VAL = 0;
-  45              		.loc 1 10 5 is_stmt 1 view .LVU5
-  46              		.loc 1 10 18 is_stmt 0 view .LVU6
-  47 0016 0022     		movs	r2, #0
-  48 0018 9A61     		str	r2, [r3, #24]
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s 			page 2
+ 164              		.loc 1 6 5 view .LVU39
+   6:src/system_stm32f4xx.c ****     SCB->CPACR |= ((3UL << 10 * 2) | (3UL << 11 * 2)); /* set CP10 and CP11 Full Access */
+ 165              		.loc 1 6 16 is_stmt 0 view .LVU40
+ 166 0002 064A     		ldr	r2, .L9
+ 167 0004 D2F88830 		ldr	r3, [r2, #136]
+ 168 0008 43F47003 		orr	r3, r3, #15728640
+ 169 000c C2F88830 		str	r3, [r2, #136]
+   8:src/system_stm32f4xx.c ****     ClockInit();
+ 170              		.loc 1 8 5 is_stmt 1 view .LVU41
+ 171 0010 FFF7FEFF 		bl	ClockInit
+ 172              	.LVL0:
+   9:src/system_stm32f4xx.c ****     SysTickInit();
+ 173              		.loc 1 9 5 view .LVU42
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s 			page 5
 
 
-  11:src/system_stm32f4xx.c ****     SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk | SysTick_CTRL_CLKSOURCE_Msk;
-  49              		.loc 1 11 5 is_stmt 1 view .LVU7
-  50              		.loc 1 11 19 is_stmt 0 view .LVU8
-  51 001a 1A69     		ldr	r2, [r3, #16]
-  52 001c 42F00502 		orr	r2, r2, #5
-  53 0020 1A61     		str	r2, [r3, #16]
-  12:src/system_stm32f4xx.c **** }
-  54              		.loc 1 12 1 view .LVU9
-  55 0022 7047     		bx	lr
-  56              	.L3:
-  57              		.align	2
-  58              	.L2:
-  59 0024 00ED00E0 		.word	-536810240
-  60              		.cfi_endproc
-  61              	.LFE134:
-  63              		.text
-  64              	.Letext0:
-  65              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
-  66              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
-  67              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s 			page 3
+ 174 0014 FFF7FEFF 		bl	SysTickInit
+ 175              	.LVL1:
+  10:src/system_stm32f4xx.c **** }
+ 176              		.loc 1 10 1 is_stmt 0 view .LVU43
+ 177 0018 08BD     		pop	{r3, pc}
+ 178              	.L10:
+ 179 001a 00BF     		.align	2
+ 180              	.L9:
+ 181 001c 00ED00E0 		.word	-536810240
+ 182              		.cfi_endproc
+ 183              	.LFE134:
+ 185              		.text
+ 186              	.Letext0:
+ 187              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 188              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 189              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
+ 190              		.file 5 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system_stm32f4xx.c
-C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s:20     .text.SystemInit:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s:26     .text.SystemInit:00000000 SystemInit
-C:\Users\nekita\AppData\Local\Temp\ccgH6y5z.s:59     .text.SystemInit:00000024 $d
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:20     .text.ClockInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:26     .text.ClockInit:00000000 ClockInit
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:108    .text.ClockInit:00000068 $d
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:114    .text.SysTickInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:120    .text.SysTickInit:00000000 SysTickInit
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:147    .text.SystemInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:153    .text.SystemInit:00000000 SystemInit
+C:\Users\nekita\AppData\Local\Temp\ccyN1rWc.s:181    .text.SystemInit:0000001c $d
 
 NO UNDEFINED SYMBOLS

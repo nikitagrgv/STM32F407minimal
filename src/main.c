@@ -48,21 +48,21 @@ void config()
     //                  GPIO_AFRH_AFSEL10_2;
 
     // configuration for USART1
-    USART1->BRR = (uint16_t)(16000000 / 115200);
+    USART1->BRR = (uint16_t)(84e6 / 115200);
     USART1->CR1 |= USART_CR1_UE_Msk;
 }
 
 int main()
 {
     config();
-
+    transmit("reset\n", 6);
     while (1)
     {
         char data[256];
-        uint32_t size = sprintf(data, "dat1\n");
+        uint32_t size = sprintf(data, "data\n");
         transmit(data, size);
-
         wait(1000 * 1000);
+
         GPIOA->ODR ^= GPIO_ODR_ODR_6;
     }
 }
