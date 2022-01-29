@@ -8,7 +8,7 @@
             "request": "launch",
             "miDebuggerPath": "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gdb.exe",
             "targetArchitecture": "arm",
-            "program": "C:/Users/nekita/Desktop/stmminimal/build/f407ve.elf",
+            "program": "C:/Users/nekita/Desktop/STM32F407minimal/build/f407ve.elf",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -16,10 +16,10 @@
                     "ignoreFailures": true
                 },
             {
-                "text": "file 'C:/Users/nekita/Desktop/stmminimal/build/f407ve.elf'"
+                "text": "file 'C:/Users/nekita/Desktop/STM32F407minimal/build/f407ve.elf'"
             },
             {
-                "text": "target remote localhost:3333"
+                "text": "target remote localhost:4242"
             },
             {
                 "text": "monitor reset init"
@@ -27,7 +27,7 @@
                 
             ],
             "externalConsole": false,
-            "cwd": "C:/Users/nekita/Desktop/stmminimal/build",
+            "cwd": "C:/Users/nekita/Desktop/STM32F407minimal/build",
             "logging": { "trace": true, "traceResponse": true, "engineLogging": true }
             }
     ]

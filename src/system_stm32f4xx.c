@@ -2,8 +2,9 @@
 
 void SystemInit(void)
 {
-    /* FPU settings ------------------------------------------------------------*/
-    SCB->CPACR |= ((3UL << 10 * 2) | (3UL << 11 * 2)); /* set CP10 and CP11 Full Access */
+    // floatint point unit
+    // CP10, CP11 full access
+    SCB->CPACR |= (0x3UL << 10 * 2) | (0x3UL << 11 * 2);
 
     ClockInit();
     SysTickInit();
@@ -22,8 +23,10 @@ void ClockInit()
 
     // PLL turn on, waiting
     RCC->CR |= RCC_CR_PLLON_Msk;
-    while (RCC->CR & RCC_CR_PLLRDY_Msk)
+    int i = 1e5;
+    while (RCC->CR & RCC_CR_PLLRDY_Msk || i == 0)
     {
+        i--;
     }
 
     // FLASH latency 5WS
@@ -35,8 +38,10 @@ void ClockInit()
 
     // switch to PLL, waiting
     RCC->CFGR |= RCC_CFGR_SW_PLL;
-    while (RCC->CFGR & RCC_CFGR_SWS_PLL)
+    i = 1e5;
+    while (RCC->CFGR & RCC_CFGR_SWS_PLL || i == 0)
     {
+        i--;
     }
 }
 

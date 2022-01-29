@@ -58,9 +58,12 @@ int main()
     transmit("reset\n", 6);
     while (1)
     {
+        static int i = 0;
+        i++;
         char data[256];
-        uint32_t size = sprintf(data, "data\n");
+        uint32_t size = sprintf(data, "data: %d\n", i);
         transmit(data, size);
+
         wait(1000 * 1000);
 
         GPIOA->ODR ^= GPIO_ODR_ODR_6;
