@@ -26,6 +26,18 @@ void transmit(uint8_t *data, uint32_t size)
     }
 }
 
+void recieve()
+{
+    static uint8_t data = 'e';
+
+    if (USART1->SR & USART_SR_RXNE)
+    {
+        // data = USART1->DR;
+        data = 'f';
+    }
+    transmit(&data, 1);
+}
+
 void config()
 {
     // clock for GPIOA (AHB1)
@@ -42,10 +54,10 @@ void config()
     GPIOA->AFR[1] |= GPIO_AFRH_AFSEL9_0 |
                      GPIO_AFRH_AFSEL9_1 |
                      GPIO_AFRH_AFSEL9_2;
-    // GPIOA->MODER |= GPIO_MODER_MODE10_1;
-    // GPIOA->AFR[1] |= GPIO_AFRH_AFSEL10_0 |
-    //                  GPIO_AFRH_AFSEL10_1 |
-    //                  GPIO_AFRH_AFSEL10_2;
+    GPIOA->MODER |= GPIO_MODER_MODE10_1;
+    GPIOA->AFR[1] |= GPIO_AFRH_AFSEL10_0 |
+                     GPIO_AFRH_AFSEL10_1 |
+                     GPIO_AFRH_AFSEL10_2;
 
     // configuration for USART1
     USART1->BRR = (uint16_t)(84e6 / 115200);
@@ -58,11 +70,13 @@ int main()
     transmit("reset\n", 6);
     while (1)
     {
-        static int i = 0;
-        i++;
-        char data[256];
-        uint32_t size = sprintf(data, "data: %d\n", i);
-        transmit(data, size);
+        recieve();
+
+        // static int i = 0;
+        // i++;
+        // char data[256];
+        // uint32_t size = sprintf(data, "data: %d\n", i);
+        // transmit(data, size);
 
         wait(1000 * 1000);
 

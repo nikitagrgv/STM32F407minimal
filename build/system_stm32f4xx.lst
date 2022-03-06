@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 1
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 1
   38 0004 22F4FF42 		bic	r2, r2, #32640
   39 0008 22F04002 		bic	r2, r2, #64
   40 000c 5A60     		str	r2, [r3, #4]
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 2
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s 			page 2
 
 
   19:src/system_stm32f4xx.c ****     RCC->PLLCFGR |= 168UL << RCC_PLLCFGR_PLLN_Pos;
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 1
   79 003c 104A     		ldr	r2, .L6+8
   80 003e 1368     		ldr	r3, [r2]
   81              	.LVL2:
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 3
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s 			page 3
 
 
   82              		.loc 1 33 16 view .LVU20
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 1
   29:src/system_stm32f4xx.c ****     }
  121              		.loc 1 29 10 is_stmt 0 view .LVU36
  122 0070 013B     		subs	r3, r3, #1
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 4
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s 			page 4
 
 
  123              	.LVL5:
@@ -237,8 +237,8 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 1
  167 000c 1A69     		ldr	r2, [r3, #16]
  168 000e 42F00502 		orr	r2, r2, #5
  169 0012 1A61     		str	r2, [r3, #16]
-  54:src/system_stm32f4xx.c **** }...
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 5
+  54:src/system_stm32f4xx.c **** }
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s 			page 5
 
 
  170              		.loc 1 54 1 view .LVU48
@@ -253,58 +253,59 @@ ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 1
  180              		.thumb_func
  182              	SystemInit:
  183              	.LFB134:
-   4:src/system_stm32f4xx.c **** {
+   4:src/system_stm32f4xx.c ****     // floatint point unit
  184              		.loc 1 4 1 is_stmt 1 view -0
  185              		.cfi_startproc
  186              		@ args = 0, pretend = 0, frame = 0
  187              		@ frame_needed = 0, uses_anonymous_args = 0
  188 0000 08B5     		push	{r3, lr}
- 189              		.cfi_def_cfa_offset 8
- 190              		.cfi_offset 3, -8
- 191              		.cfi_offset 14, -4
-   7:src/system_stm32f4xx.c ****     SCB->CPACR |= (0x3UL << 10 * 2) | (0x3UL << 11 * 2);
- 192              		.loc 1 7 5 view .LVU50
-   7:src/system_stm32f4xx.c ****     SCB->CPACR |= (0x3UL << 10 * 2) | (0x3UL << 11 * 2);
- 193              		.loc 1 7 16 is_stmt 0 view .LVU51
- 194 0002 064A     		ldr	r2, .L11
- 195 0004 D2F88830 		ldr	r3, [r2, #136]
- 196 0008 43F47003 		orr	r3, r3, #15728640
- 197 000c C2F88830 		str	r3, [r2, #136]
-   9:src/system_stm32f4xx.c ****     ClockInit();
- 198              		.loc 1 9 5 is_stmt 1 view .LVU52
- 199 0010 FFF7FEFF 		bl	ClockInit
- 200              	.LVL7:
-  10:src/system_stm32f4xx.c ****     SysTickInit();
- 201              		.loc 1 10 5 view .LVU53
- 202 0014 FFF7FEFF 		bl	SysTickInit
- 203              	.LVL8:
-  11:src/system_stm32f4xx.c **** }
- 204              		.loc 1 11 1 is_stmt 0 view .LVU54
- 205 0018 08BD     		pop	{r3, pc}
- 206              	.L12:
- 207 001a 00BF     		.align	2
- 208              	.L11:
- 209 001c 00ED00E0 		.word	-536810240
- 210              		.cfi_endproc
- 211              	.LFE134:
- 213              		.text
- 214              	.Letext0:
- 215              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 216              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
- 217              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
- 218              		.file 5 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
-ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s 			page 6
+ 189              	.LCFI0:
+ 190              		.cfi_def_cfa_offset 8
+ 191              		.cfi_offset 3, -8
+ 192              		.cfi_offset 14, -4
+   7:src/system_stm32f4xx.c **** 
+ 193              		.loc 1 7 5 view .LVU50
+   7:src/system_stm32f4xx.c **** 
+ 194              		.loc 1 7 16 is_stmt 0 view .LVU51
+ 195 0002 064A     		ldr	r2, .L11
+ 196 0004 D2F88830 		ldr	r3, [r2, #136]
+ 197 0008 43F47003 		orr	r3, r3, #15728640
+ 198 000c C2F88830 		str	r3, [r2, #136]
+   9:src/system_stm32f4xx.c ****     SysTickInit();
+ 199              		.loc 1 9 5 is_stmt 1 view .LVU52
+ 200 0010 FFF7FEFF 		bl	ClockInit
+ 201              	.LVL7:
+  10:src/system_stm32f4xx.c **** }
+ 202              		.loc 1 10 5 view .LVU53
+ 203 0014 FFF7FEFF 		bl	SysTickInit
+ 204              	.LVL8:
+  11:src/system_stm32f4xx.c **** 
+ 205              		.loc 1 11 1 is_stmt 0 view .LVU54
+ 206 0018 08BD     		pop	{r3, pc}
+ 207              	.L12:
+ 208 001a 00BF     		.align	2
+ 209              	.L11:
+ 210 001c 00ED00E0 		.word	-536810240
+ 211              		.cfi_endproc
+ 212              	.LFE134:
+ 214              		.text
+ 215              	.Letext0:
+ 216              		.file 2 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 217              		.file 3 "c:\\program files (x86)\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\
+ 218              		.file 4 "D:\\Keil\\Packs\\ARM\\CMSIS\\5.8.0\\CMSIS\\Core\\Include/core_cm4.h"
+ 219              		.file 5 "D:\\Keil\\Packs\\Keil\\STM32F4xx_DFP\\2.16.0\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Incl
+ARM GAS  C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s 			page 6
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 system_stm32f4xx.c
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:20     .text.ClockInit:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:26     .text.ClockInit:00000000 ClockInit
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:136    .text.ClockInit:00000078 $d
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:143    .text.SysTickInit:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:149    .text.SysTickInit:00000000 SysTickInit
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:176    .text.SystemInit:00000000 $t
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:182    .text.SystemInit:00000000 SystemInit
-C:\Users\nekita\AppData\Local\Temp\ccMOqmQ4.s:209    .text.SystemInit:0000001c $d
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:20     .text.ClockInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:26     .text.ClockInit:00000000 ClockInit
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:136    .text.ClockInit:00000078 $d
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:143    .text.SysTickInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:149    .text.SysTickInit:00000000 SysTickInit
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:176    .text.SystemInit:00000000 $t
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:182    .text.SystemInit:00000000 SystemInit
+C:\Users\nekita\AppData\Local\Temp\ccKqIeTE.s:210    .text.SystemInit:0000001c $d
 
 NO UNDEFINED SYMBOLS

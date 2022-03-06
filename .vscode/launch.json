@@ -1,34 +1,22 @@
 {
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Debug",
-            "type": "cppdbg",
+            "type": "cortex-debug",
             "request": "launch",
-            "miDebuggerPath": "C:/Program Files (x86)/GNU Arm Embedded Toolchain/10 2021.10/bin/arm-none-eabi-gdb.exe",
-            "targetArchitecture": "arm",
-            "program": "C:/Users/nekita/Desktop/STM32F407minimal/build/f407ve.elf",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-            {
-                "text": "file 'C:/Users/nekita/Desktop/STM32F407minimal/build/f407ve.elf'"
-            },
-            {
-                "text": "target remote localhost:4242"
-            },
-            {
-                "text": "monitor reset init"
-            }
-                
-            ],
-            "externalConsole": false,
-            "cwd": "C:/Users/nekita/Desktop/STM32F407minimal/build",
-            "logging": { "trace": true, "traceResponse": true, "engineLogging": true }
-            }
+            "servertype": "stutil",
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/f407ve.elf",
+            "name": "Debug (ST-Util)",
+            "device": "STM32F407VE",
+            "svdFile": "./STM32F407.svd",
+            "breakAfterReset": true,
+            // "runToEntryPoint": "main",
+            // "preLaunchCommands": [
+            //     "monitor reset halt",
+            //     "monitor halt"
+            // ],
+            "v1": false
+        }
     ]
 }
